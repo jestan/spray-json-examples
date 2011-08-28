@@ -12,5 +12,5 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "cc.spray.json" %% "spray-json" % "1.0" % "compile" withSources()
+  "cc.spray.json" %% "spray-json" % "1.0.0" % "compile" withSources()
 )
