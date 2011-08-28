@@ -1,12 +1,12 @@
 import cc.spray.json._
 
-object Sex extends Enumeration {
+object EnumSex extends Enumeration {
   type Sex = Value
   val MALE = Value("MALE")
   val FEMALE = Value("FEMALE")
 }
 
-case class Person(name: String, age: Int, sex: Sex.Sex , address: Address)
+case class Person(name: String, age: Int, sex: EnumSex.Sex , address: Address)
 
 object PersonProtocol extends DefaultJsonProtocol {
 
@@ -19,7 +19,7 @@ object PersonProtocol extends DefaultJsonProtocol {
 
     def read(value: JsValue) = value match {
       case JsObject(List(JsField("name", JsString(name)), JsField("age", JsNumber(age)), JsField("sex", JsNumber(sex)), JsField("address", address))) => {
-        Person(name, age.toInt, Sex(sex.toInt), address.fromJson[Address])
+        Person(name, age.toInt, EnumSex(sex.toInt), address.fromJson[Address])
       }
       case _ => throw new DeserializationException("Person expected")
     }
