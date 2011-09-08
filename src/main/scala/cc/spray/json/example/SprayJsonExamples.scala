@@ -1,10 +1,8 @@
+package cc.spray.json.example
+
 import cc.spray.json._
 
 object SprayJsonExamples {
-
-  import AddressProtocol._
-  import PersonProtocol._
-
   def main(args: Array[String]) = {
     val json = """{ "no": "A1", "street" : "Main Street", "city" : "Colombo" }"""
     val address = JsonParser(json).fromJson[Address]
