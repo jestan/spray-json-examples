@@ -2,8 +2,19 @@ package cc.spray.json.example
 
 import cc.spray.json._
 
+
+object EnumSex extends Enumeration {
+  type Sex = Value
+  val MALE = Value("MALE")
+  val FEMALE = Value("FEMALE")
+}
+
+case class Address(no: String, street: String, city: String)
+
+case class Person(name: String, age: Int, sex: EnumSex.Sex, address: Address)
+
 object SprayJsonExamples {
-  def main(args: Array[String]) = {
+  def main(args: Array[String]) {
     val json = """{ "no": "A1", "street" : "Main Street", "city" : "Colombo" }"""
     val address = JsonParser(json).fromJson[Address]
     println(address)
